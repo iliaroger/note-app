@@ -1,0 +1,64 @@
+.postMainWrapper{
+    text-align: center;
+    height: 600px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    margin-top: 3%;
+}
+
+.postMainWrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.postRow{
+    text-align: center;
+    overflow: hidden;
+}
+
+.postInput{
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-family: sf-thin;
+    font-size: 30px;
+}
+
+.postButton{
+    text-align: center;
+    color: white;
+    font-family: sf-thin;
+    font-size: 20px;
+    background-color: rgb(75, 147, 255);
+    padding: 2px 50px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.postButton:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.backButton{
+    text-align: center;
+    color: white;
+    font-family: sf-thin;
+    font-size: 20px;
+    background-color: rgb(75, 147, 255);
+    padding: 2px 50px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.backButton:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.buttonMargin{
+    margin-top: 10px;
+}

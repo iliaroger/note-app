@@ -1,0 +1,83 @@
+.outerWrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.innerRow{
+    margin-top: 25%;
+}
+
+
+.mainText{
+    color: white;
+    text-align: center;
+    font-family: sf-regular;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+.ifText{
+    text-align: center;
+    color: white;
+    margin: 2%;
+    font-family: sf-ultralight;
+    font-size: 25px;
+}
+
+.elseText {
+    text-align: center;
+    color: white;
+    margin: 2%;
+    font-family: sf-ultralight;
+    font-size: 25px;
+}
+
+.loginButton{
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-family: sf-thin;
+    font-size: 20px;
+    background-color: #5ABDFF;
+    padding: 2px 50px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.loginButton:hover{
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(78, 158, 211);
+}
+
+.readButton {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-family: sf-thin;
+    font-size: 20px;
+    background-color: #745AFF;
+    padding: 2px 50px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.readButton:hover{
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(97, 77, 211);
+}
+
+.linkWrapper{
+    margin: 0 auto;
+}
+
+.linkWrapper:hover{
+    text-decoration: none;
+}

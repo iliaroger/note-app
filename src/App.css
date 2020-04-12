@@ -1,38 +1,20 @@
-.App {
-  text-align: center;
+.mainBackground{
+    background-color: #2B2B2B;
+    width: 100vw;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+    font-family: 'sf-regular';
+    src: url('./fonts/SF-Pro-Display-Regular.otf') format('opentype');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+    font-family: 'sf-thin';
+    src: url('./fonts/SF-Pro-Display-Thin.otf') format('opentype');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+    font-family: 'sf-ultralight';
+    src: url('./fonts/SF-Pro-Display-Ultralight.otf') format('opentype');
 }
