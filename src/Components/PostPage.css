@@ -40,6 +40,8 @@
 .postButton:hover{
     text-decoration: none;
     color: white;
+    background-color: rgb(61, 117, 202);
+    transition: 0.3s;
 }
 
 .backButton{
@@ -47,7 +49,7 @@
     color: white;
     font-family: sf-thin;
     font-size: 20px;
-    background-color: rgb(75, 147, 255);
+    background-color: rgb(255, 75, 135);
     padding: 2px 50px;
     border-radius: 20px;
     font-weight: 500;
@@ -57,6 +59,8 @@
 .backButton:hover{
     text-decoration: none;
     color: white;
+    background-color: rgb(182, 57, 99);
+    transition: 0.3s;
 }
 
 .buttonMargin{
