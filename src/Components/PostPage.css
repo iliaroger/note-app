@@ -92,6 +92,7 @@
     -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 2%;
 }
 
 .noteBoxP{
@@ -122,3 +123,12 @@
     padding: 1px;
     margin-right: 5px;
 }
+
+.noteDate{
+    font-family: sf-thin;
+    font-size: 40px;
+    color: white;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+

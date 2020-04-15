@@ -5,8 +5,7 @@ import db from './Firebase';
 
 function Post(){
 
-    const [id, setId] = useState(['']);
-    const [data, setData] = useState(['']);
+    const [data, setData] = useState([]);
     const [input, setInput] = useState('');
     const purpleColor = "#4300FF";
 
@@ -15,36 +14,55 @@ function Post(){
     }
 
     useEffect(()=>{
-        const firestoreData = [''];
-        const firestoreId = [''];
+        checkForDate();
+        const firestoreData = [];
         db.collection('notes').get().then((querySnapshot) => {
             querySnapshot.forEach((queryElement) => {
                 if(queryElement != null){
-                    firestoreData.push(queryElement.data().note)
-                    firestoreId.push(queryElement.id);
+                    firestoreData.push({
+                        data: queryElement.data().note,
+                        time: queryElement.data().time,
+                        id: queryElement.id
+                    });
                 }
             })
             setData(firestoreData);
-            setId(firestoreId);
         })
-        console.log("function called")
     },[])
 
     function changeInput(e){
         setInput(e.target.value);
     }
 
+    function checkForDate(){
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        let currentDate = new Date();
+        const h1 = React.createElement('h1', {className: "noteDate"}, `${monthNames[currentDate.getMonth()]}, ${currentDate.getFullYear()}`)
+
+        if(currentDate.getDate() === 15){
+            return h1;
+        }
+    }
+
     function postNote(){
         // post data to firebase
 
         if(input !== ''){
+            
+            let currentTime = new Date();
             db.collection('notes').add({
-                note: input
+                note: input,
+                time: currentTime
             })
             .then(()=>{
                 setData([
                     ...data,
-                    input
+                    {
+                        data: input,
+                        time: currentTime
+                    }
                 ])
             })
             .catch(()=>{
@@ -58,12 +76,17 @@ function Post(){
         <div className="row postRow">
             <div className="col-md-12 postMainWrapper">
                 <div>
-                 {data === [''] ? <p>no data received</p> : data.map(function (el){
-                     if(el !== ''){
-                     return <div className="noteBox" style={dynamicBorderStyle}>
-                                <p key={id} className="noteBoxP">{el}</p> 
-                                <span className="noteBoxS">march 31, 2020</span>
-                            </div>                   
+                 {data === [] ? <p>no data received</p> : data.map(function (el){
+                     if(el.data !== ''){
+                     return <div>
+                                <div id="noteDateInsert">
+                                    {checkForDate()}
+                                </div>
+                                <div className="noteBox" style={dynamicBorderStyle}>
+                                    <p key={el.id} className="noteBoxP">{el.data}</p>
+                                    <span className="noteBoxS">march 31, 2020</span>
+                                </div>
+                            </div>                                   
                      }
                      return null;
                  })}
