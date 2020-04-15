@@ -15,6 +15,14 @@
     overflow: hidden;
 }
 
+.postRow p {
+    color: white;
+}
+
+.postRow li {
+    color: white;
+}
+
 .postInput{
     border: none;
     background-color: transparent;
@@ -35,6 +43,8 @@
     border-radius: 20px;
     font-weight: 500;
     transition: 0.3s;
+    border: none;
+    outline: none;
 }
 
 .postButton:hover{
@@ -43,6 +53,11 @@
     background-color: rgb(61, 117, 202);
     transition: 0.3s;
 }
+
+.postButton:active{
+    outline: none !important;
+}
+
 
 .backButton{
     text-align: center;
@@ -53,6 +68,7 @@
     padding: 2px 50px;
     border-radius: 20px;
     font-weight: 500;
+    padding: 5px 35px;
     transition: 0.3s;
 }
 
@@ -65,4 +81,44 @@
 
 .buttonMargin{
     margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.noteBox{
+    background-color: black;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2%;
+    -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.noteBoxP{
+    font-family: sf-thin;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 0;
+    padding: 1px;
+}
+
+.noteBoxP::before{
+    content: "\0022";
+}
+
+.noteBoxP::after{
+    content: "\0022";
+}
+
+.noteBoxS{
+    text-align: right;
+    color: white;
+    font-family: sf-ultralight;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: block;
+    text-align: right;
+    padding: 1px;
+    margin-right: 5px;
 }

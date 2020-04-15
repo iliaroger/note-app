@@ -1,0 +1,3 @@
+- create dynamic coloring for the left border
+- add a month indicator for a new starting month (march- 2020)
+- 
