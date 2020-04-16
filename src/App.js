@@ -12,8 +12,8 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Login}/>
-            <Route exact path="/read" component={Read}/>
             <Route exact path="/post" component={Post}/>
+            <Route exact path="/read" component={Read}/>
           </Switch>
         </Router>
       </div>

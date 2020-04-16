@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../Components/LoginPage.css'
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import firestore from './Firebase';
 
 function Login(){
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    function loginUser(){
+
+        const authPromise = firestore.authentication.signInWithEmailAndPassword(email, password);
+
+        authPromise.then(()=>{
+            return <Redirect to="/post"></Redirect>
+        })
+    }
+
+    function onEmailChange(e){
+        setEmail(e.target.value);
+    }
+
+    function onPasswordChange(e){
+        setPassword(e.target.value);
+    }
+
     return(
         <div className="outerWrapper">
         <div className="row innerRow">
@@ -10,9 +32,13 @@ function Login(){
             <div className="col-md-12">
                 <p className="ifText">if you are ilia then:</p>
             </div>
-            <Link to="/post" className="linkWrapper loginButton">
+            <div className="col-md-12 inputGroup">
+                <input className="loginInput" id="loginEmail" onChange={onEmailChange} type="email" placeholder="email"></input>
+                <input className="loginInput" id="loginPassword" onChange={onPasswordChange} placeholder="password"></input>
+            </div>
+            <button onClick={loginUser} className="linkWrapper loginButton">
                 login
-            </Link>
+            </button>
             <div className="col-md-12">
                 <p className="elseText">else:</p>
             </div>

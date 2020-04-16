@@ -21,7 +21,7 @@
 .ifText{
     text-align: center;
     color: white;
-    margin: 2%;
+    margin-top: 2%;
     font-family: sf-ultralight;
     font-size: 25px;
 }
@@ -45,6 +45,7 @@
     border-radius: 20px;
     font-weight: 500;
     transition: 0.3s;
+    border: none;
 }
 
 .loginButton:hover{
@@ -80,4 +81,24 @@
 
 .linkWrapper:hover{
     text-decoration: none;
+}
+
+.loginInput {
+    margin: 0 auto;;
+    display: block;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(124, 124, 124);
+    outline: none;
+    color: white;
+    font-family: sf-thin;
+    font-size: 25px;
+}
+
+.loginInput::placeholder{
+    text-align: center;
+}
+
+.inputGroup{
+    margin-bottom: 2%;
 }

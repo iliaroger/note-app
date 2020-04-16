@@ -26,7 +26,7 @@
 .postInput{
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(112, 112, 112);
     outline: none;
     color: white;
     font-family: sf-thin;

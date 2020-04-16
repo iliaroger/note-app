@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import '../Components/PostPage.css';
 import {Link} from 'react-router-dom';
-import db from './Firebase';
+import firestore from './Firebase';
+
 
 function Post(){
 
@@ -25,7 +26,7 @@ function Post(){
         checkForDate();
         const firestoreData = [];
         let counter = 0;
-        db.collection('notes').get().then((querySnapshot) => {
+        firestore.database.collection('notes').get().then((querySnapshot) => {
             querySnapshot.forEach((queryElement) => {
                 if(queryElement != null){
                     firestoreData.push({
@@ -38,13 +39,14 @@ function Post(){
                     if(counter >= 10) counter = 0;
                 }
             })
+            console.log('database called');
             setData(firestoreData);
         })
     },[])
 
-    function changeInput(e){
+    const changeInput = useCallback((e)=>{
         setInput(e.target.value);
-    }
+    },[])
 
     function checkForDate(el, monthReminder){
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -83,7 +85,7 @@ function Post(){
         if(input !== ''){
             
             let currentTime = new Date();
-            db.collection('notes').add({
+            firestore.database.collection('notes').add({
                 note: input,
                 time: currentTime
             })
@@ -109,13 +111,13 @@ function Post(){
                 <div>
                  {data === [] ? <p>no data received</p> : data.map(function (el){
                      if(el.data !== ''){
-                     return <div key={el.id + 16}>
-                                <div key={el.id +8} id="noteDateInsert">
+                         return <div key={Math.floor(Math.random()*50000)}>
+                                <div key={Math.floor(Math.random()*50000)} id="noteDateInsert">
                                     {checkForDate(el.time.seconds, el.monthReminder)}
                                 </div>
-                                <div key={el.id + 5} className="noteBox" style={colorPicker()}>
-                                    <p key={el.id} className="noteBoxP">{el.data}</p>
-                                    <span key={el.id + 2} className="noteBoxS">{convertTime(el.time.seconds)}</span>
+                                <div key={Math.floor(Math.random()*50000)} className="noteBox" style={colorPicker}>
+                                    <p key={Math.floor(Math.random()*50000)} className="noteBoxP">{el.data}</p>
+                                    <span key={Math.floor(Math.random()*50000)} className="noteBoxS">{convertTime(el.time.seconds)}</span>
                                 </div>
                             </div>                                   
                      }

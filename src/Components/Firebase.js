@@ -12,8 +12,14 @@ import firebase from 'firebase';
             appId: "1:865664949773:web:f502c7675d4d5622433f44"
         })
     }
+    let db = firebase.firestore();
+    let auth = firebase.auth();
 
-    var db = firebase.firestore();
+
+    const firestore = {
+        database: db,
+        authentication: auth
+    }
     
 
-    export default db;
+    export default firestore;
