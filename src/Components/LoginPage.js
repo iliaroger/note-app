@@ -7,13 +7,20 @@ function Login(){
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userAuth, setUserAuth] = useState(false);
     
     function loginUser(){
 
         const authPromise = firestore.authentication.signInWithEmailAndPassword(email, password);
 
-        authPromise.then(()=>{
-            return <Redirect to="/post"></Redirect>
+        authPromise.then((data)=>{
+            if(data != null){
+                console.log('user authenticated');
+                setUserAuth(true);
+            }
+        }).catch((err)=>{
+            console.log(err);
+            setUserAuth(false);
         })
     }
 
@@ -39,6 +46,7 @@ function Login(){
             <button onClick={loginUser} className="linkWrapper loginButton">
                 login
             </button>
+            {userAuth ? <Redirect to='/post' /> : null}
             <div className="col-md-12">
                 <p className="elseText">else:</p>
             </div>

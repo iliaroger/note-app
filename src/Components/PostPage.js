@@ -115,7 +115,7 @@ function Post(){
                                 <div key={Math.floor(Math.random()*50000)} id="noteDateInsert">
                                     {checkForDate(el.time.seconds, el.monthReminder)}
                                 </div>
-                                <div key={Math.floor(Math.random()*50000)} className="noteBox" style={colorPicker}>
+                                <div key={Math.floor(Math.random()*50000)} className="noteBox" style={colorPicker()}>
                                     <p key={Math.floor(Math.random()*50000)} className="noteBoxP">{el.data}</p>
                                     <span key={Math.floor(Math.random()*50000)} className="noteBoxS">{convertTime(el.time.seconds)}</span>
                                 </div>
