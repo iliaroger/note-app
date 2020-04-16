@@ -84,7 +84,7 @@ function Read(){
                  })}
                 </div>
             </div>
-            <div className="col-md-12 buttonMargin">
+            <div className="col-md-12 readButtonMargin">
                 <Link to="/" className="readBackButton">go back</Link>
             </div>
         </div>

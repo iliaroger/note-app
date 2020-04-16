@@ -7,10 +7,18 @@ function Post(){
 
     const [data, setData] = useState([]);
     const [input, setInput] = useState('');
-    const purpleColor = "#4300FF";
 
-    const dynamicBorderStyle = {
-        borderLeft: "10px solid " + purpleColor
+    function colorPicker(){
+        const colorPalette = ['0444BF', '0584F2', '0AAFF1', 'EDF259', '6465A5', '6975A6', 'F28A30', 'F3E96B', 'F05837',
+        '192E5B', '1D65A6', '00743F', 'F2A104', '16235A', 'F4874B', '5C4A72', '80ADD7', 'C0334D', '0486DB', '05ACD3',
+        '73C0F4', '182657', '121F40', 'D75B66', '2B193E', '8D2D56', 'D53C3C', 'F1445B', 'F2746B', 'BE302B', 'BE3B45'
+        ]
+
+        let dynamicBorderStyle = {
+            borderLeft: `10px solid #${colorPalette[Math.floor(Math.random()*31)]}`
+        }
+
+        return dynamicBorderStyle;
     }
 
     useEffect(()=>{
@@ -105,7 +113,7 @@ function Post(){
                                 <div key={el.id +8} id="noteDateInsert">
                                     {checkForDate(el.time.seconds, el.monthReminder)}
                                 </div>
-                                <div key={el.id + 5} className="noteBox" style={dynamicBorderStyle}>
+                                <div key={el.id + 5} className="noteBox" style={colorPicker()}>
                                     <p key={el.id} className="noteBoxP">{el.data}</p>
                                     <span key={el.id + 2} className="noteBoxS">{convertTime(el.time.seconds)}</span>
                                 </div>
