@@ -16,14 +16,18 @@ function Post(){
     useEffect(()=>{
         checkForDate();
         const firestoreData = [];
+        let counter = 0;
         db.collection('notes').get().then((querySnapshot) => {
             querySnapshot.forEach((queryElement) => {
                 if(queryElement != null){
                     firestoreData.push({
                         data: queryElement.data().note,
                         time: queryElement.data().time,
-                        id: queryElement.id
+                        id: queryElement.id,
+                        monthReminder: counter %10 === 0 ? true : false
                     });
+                    counter++;
+                    if(counter >= 10) counter = 0;
                 }
             })
             setData(firestoreData);
@@ -34,16 +38,35 @@ function Post(){
         setInput(e.target.value);
     }
 
-    function checkForDate(){
+    function checkForDate(el, monthReminder){
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
-        let currentDate = new Date();
-        const h1 = React.createElement('h1', {className: "noteDate"}, `${monthNames[currentDate.getMonth()]}, ${currentDate.getFullYear()}`)
+        let seconds = el;
+        let currentMonth = new Date().getUTCMonth(seconds);
+        let currentYear = new Date().getUTCFullYear(seconds);
+        const h1 = React.createElement('h1', {className: "noteDate"}, `${monthNames[currentMonth]}, ${currentYear}`);
 
-        if(currentDate.getDate() === 15){
+        if(monthReminder === true){
             return h1;
         }
+
+
+    }
+
+    function convertTime(time){
+        const monthNames = ["january", "february", "march", "april", "may", "june",
+            "july", "august", "september", "october", "november", "december"
+        ];
+
+        let conYear = new Date().getUTCFullYear(time);
+        let conMonths = new Date().getUTCMonth(time);
+        let conDay = new Date().getUTCDate(time);
+
+        return (
+            `${monthNames[conMonths]} ${conDay}, ${conYear}`
+        )
+
     }
 
     function postNote(){
@@ -78,13 +101,13 @@ function Post(){
                 <div>
                  {data === [] ? <p>no data received</p> : data.map(function (el){
                      if(el.data !== ''){
-                     return <div>
-                                <div id="noteDateInsert">
-                                    {checkForDate()}
+                     return <div key={el.id + 16}>
+                                <div key={el.id +8} id="noteDateInsert">
+                                    {checkForDate(el.time.seconds, el.monthReminder)}
                                 </div>
-                                <div className="noteBox" style={dynamicBorderStyle}>
+                                <div key={el.id + 5} className="noteBox" style={dynamicBorderStyle}>
                                     <p key={el.id} className="noteBoxP">{el.data}</p>
-                                    <span className="noteBoxS">march 31, 2020</span>
+                                    <span key={el.id + 2} className="noteBoxS">{convertTime(el.time.seconds)}</span>
                                 </div>
                             </div>                                   
                      }

@@ -1,0 +1,19 @@
+.readBackButton {
+    text-align: center;
+    color: white;
+    font-family: sf-thin;
+    font-size: 20px;
+    background-color: rgb(255, 75, 135);
+    padding: 2px 50px;
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 5px 35px;
+    transition: 0.3s;
+}
+
+.readBackButton:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(182, 57, 99);
+    transition: 0.3s;
+}
