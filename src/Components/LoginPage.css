@@ -102,3 +102,7 @@
 .inputGroup{
     margin-bottom: 2%;
 }
+
+#loginPassword[type="password"] {
+    -webkit-text-security: disc;
+}

@@ -23,7 +23,6 @@ function Post(){
     }
 
     useEffect(()=>{
-        checkForDate();
         const firestoreData = [];
         let counter = 0;
         firestore.database.collection('notes').get().then((querySnapshot) => {
@@ -69,13 +68,27 @@ function Post(){
             "july", "august", "september", "october", "november", "december"
         ];
 
-        let conYear = new Date().getUTCFullYear(time);
-        let conMonths = new Date().getUTCMonth(time);
-        let conDay = new Date().getUTCDate(time);
+        if(time !== undefined || NaN){
+            let epoch = new Date(0);
+            let conTime = epoch.setUTCSeconds(time);
 
-        return (
-            `${monthNames[conMonths]} ${conDay}, ${conYear}`
-        )
+            let day = new Date(conTime).getDate();
+            let month = new Date(conTime).getMonth();
+            let year = new Date(conTime).getFullYear();
+
+
+            console.log(time, month);
+            return (
+            `${monthNames[month]} ${day}, ${year}`
+            )
+        }
+
+        else{
+            return (
+                `${monthNames[new Date().getMonth()]} ${new Date().getDate()}, ${new Date().getFullYear()}`
+            )
+        }
+
 
     }
 

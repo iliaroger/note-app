@@ -1,3 +1,4 @@
-- create dynamic coloring for the left border
-- add a month indicator for a new starting month (march- 2020)
-- 
+- day display is incorrect
+- add correct display order 
+- add route security 
+- prevent rerender on input change 

@@ -41,7 +41,7 @@ function Login(){
             </div>
             <div className="col-md-12 inputGroup">
                 <input className="loginInput" id="loginEmail" onChange={onEmailChange} type="email" placeholder="email"></input>
-                <input className="loginInput" id="loginPassword" onChange={onPasswordChange} placeholder="password"></input>
+                <input className="loginInput" id="loginPassword" type="password" onChange={onPasswordChange} placeholder="password"></input>
             </div>
             <button onClick={loginUser} className="linkWrapper loginButton">
                 login
