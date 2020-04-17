@@ -38,8 +38,11 @@ function Post(){
                     if(counter >= 10) counter = 0;
                 }
             })
+            const sortedData = firestoreData.slice().sort((a,b)=>{
+                return a.time - b.time; 
+            });
+            setData(sortedData);
             console.log('database called');
-            setData(firestoreData);
         })
     },[])
 
@@ -76,8 +79,6 @@ function Post(){
             let month = new Date(conTime).getMonth();
             let year = new Date(conTime).getFullYear();
 
-
-            console.log(time, month);
             return (
             `${monthNames[month]} ${day}, ${year}`
             )

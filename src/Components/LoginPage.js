@@ -40,8 +40,10 @@ function Login(){
                 <p className="ifText">if you are ilia then:</p>
             </div>
             <div className="col-md-12 inputGroup">
-                <input className="loginInput" id="loginEmail" onChange={onEmailChange} type="email" placeholder="email"></input>
-                <input className="loginInput" id="loginPassword" type="password" onChange={onPasswordChange} placeholder="password"></input>
+                <form>
+                    <input className="loginInput" id="loginEmail" onChange={onEmailChange} type="email" placeholder="email"></input>
+                    <input className="loginInput" id="loginPassword" type="password" onChange={onPasswordChange} placeholder="password"></input>
+                </form>
             </div>
             <button onClick={loginUser} className="linkWrapper loginButton">
                 login
