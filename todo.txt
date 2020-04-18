@@ -1,5 +1,4 @@
 - add route security 
 - prevent rerender on input change 
 - add media queries
-- month reminder not displayed correctly 
 - hide public api key (firestore)
