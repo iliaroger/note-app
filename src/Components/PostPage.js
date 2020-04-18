@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 import firestore from './Firebase';
 
 
-function Post(){
 
+function Post(){
+    
     const [data, setData] = useState([]);
     const [input, setInput] = useState('');
 
@@ -45,16 +46,24 @@ function Post(){
                     firestoreData.push({
                         data: queryElement.data().note,
                         time: queryElement.data().time,
-                        id: queryElement.id,
-                        monthReminder: counter %10 === 0 ? true : false
+                        id: queryElement.id, 
                     });
-                    counter++;
-                    if(counter >= 10) counter = 0;
                 }
             })
-            const sortedData = firestoreData.slice().sort((a,b)=>{
+            const sortedData = [...firestoreData].sort((a,b)=>{
                 return a.time - b.time; 
             });
+            sortedData.forEach((element)=>{
+                Object.defineProperties(element, {
+                    monthReminder: {
+                        value: counter % 10 === 0 ? true : false,
+                        writable: true
+                    }
+                })
+                counter++;
+                if (counter >= 10) counter = 0;
+            })
+
             setData(sortedData);
             console.log('database called');
         })
