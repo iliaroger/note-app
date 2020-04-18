@@ -22,6 +22,20 @@ function Post(){
         return dynamicBorderStyle;
     }
 
+    function hashId(){
+        const characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',
+        'Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k',
+        'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5',
+        '6','7','8','9'];
+
+        let hash = '';
+        for(let i = 0; i < 20; i++){
+            hash += `${characters[Math.floor(Math.random() * 62)]}`;
+        }
+
+        return `${hash}`
+    }
+
     useEffect(()=>{
         const firestoreData = [];
         let counter = 0;
@@ -125,13 +139,13 @@ function Post(){
                 <div>
                  {data === [] ? <p>no data received</p> : data.map(function (el){
                      if(el.data !== ''){
-                         return <div key={Math.floor(Math.random()*50000)}>
-                                <div key={Math.floor(Math.random()*50000)} id="noteDateInsert">
+                         return <div key={hashId()}>
+                                <div key={hashId()} id="noteDateInsert">
                                     {checkForDate(el.time.seconds, el.monthReminder)}
                                 </div>
-                                <div key={Math.floor(Math.random()*50000)} className="noteBox" style={colorPicker()}>
-                                    <p key={Math.floor(Math.random()*50000)} className="noteBoxP">{el.data}</p>
-                                    <span key={Math.floor(Math.random()*50000)} className="noteBoxS">{convertTime(el.time.seconds)}</span>
+                                <div key={hashId()} className="noteBox" style={colorPicker()}>
+                                    <p key={hashId()} className="noteBoxP">{el.data}</p>
+                                    <span key={hashId()} className="noteBoxS">{convertTime(el.time.seconds)}</span>
                                 </div>
                             </div>                                   
                      }

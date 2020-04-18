@@ -1,4 +1,3 @@
-- day display is incorrect
-- add correct display order 
 - add route security 
 - prevent rerender on input change 
+- add media queries
