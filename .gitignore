@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 Firebase.js
+todo.txt
+
 # testing
 /coverage
 
