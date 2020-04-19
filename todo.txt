@@ -1,2 +1,1 @@
-- add route security 
 - hide public api key (firestore)

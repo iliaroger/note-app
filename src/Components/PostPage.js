@@ -6,10 +6,9 @@ import firestore from './Firebase';
 
 function Post(props){
 
-    const [userValidated, setValidation] = useState('false');
-    
     const [data, setData] = useState([]);
     const [input, setInput] = useState('');
+    const [userValidated, setValidation] = useState('false');
 
     function colorPicker(){
         const colorPalette = ['0444BF', '0584F2', '0AAFF1', 'EDF259', '6465A5', '6975A6', 'F28A30', 'F3E96B', 'F05837',
@@ -40,7 +39,7 @@ function Post(props){
 
     useEffect(()=>{
 
-        setValidation(props.location.state.validated);
+        props.location.state !== undefined ? setValidation(true) : setValidation(false);
         const firestoreData = [];
         let counter = 0;
         firestore.database.collection('notes').get().then((querySnapshot) => {
