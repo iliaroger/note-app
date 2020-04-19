@@ -1,11 +1,12 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import '../Components/PostPage.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import firestore from './Firebase';
 
 
+function Post(props){
 
-function Post(){
+    const [userValidated, setValidation] = useState('false');
     
     const [data, setData] = useState([]);
     const [input, setInput] = useState('');
@@ -38,6 +39,8 @@ function Post(){
     }
 
     useEffect(()=>{
+
+        setValidation(props.location.state.validated);
         const firestoreData = [];
         let counter = 0;
         firestore.database.collection('notes').get().then((querySnapshot) => {
@@ -143,6 +146,7 @@ function Post(){
     }
 
     return(
+        userValidated ? ( 
         <div className="row postRow">
             <div className="col-md-12 postMainWrapper">
                 <div>
@@ -172,6 +176,9 @@ function Post(){
                 <Link to="/" className="backButton">go back</Link>
             </div>
         </div>
+        ): <div>
+                <Redirect to='/'></Redirect>
+            </div>
     )
 }
 

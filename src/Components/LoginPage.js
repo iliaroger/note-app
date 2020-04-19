@@ -48,7 +48,10 @@ function Login(){
             <button onClick={loginUser} className="linkWrapper loginButton">
                 login
             </button>
-            {userAuth ? <Redirect to='/post' /> : null}
+            {userAuth ? <Redirect to={{
+                pathname: '/post',
+                state: {validated: true}
+            }} /> : null}
             <div className="col-md-12">
                 <p className="elseText">else:</p>
             </div>

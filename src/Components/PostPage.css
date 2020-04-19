@@ -132,3 +132,66 @@
     margin-bottom: 3%;
 }
 
+
+
+
+
+@media (max-width: 575.98px) {
+
+    .container{
+        width: 100% !important;
+    }
+
+    .postMainWrapper{
+        margin: 0px !important;
+    }
+
+    .postRow{
+        margin-top: 15%;
+    }
+
+    .container{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .noteDate{
+        font-size: 35px;
+        overflow: hidden;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+
+    .noteBox {
+        background-color: black;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 3%;
+        -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        margin-bottom: 2%;
+    }
+
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    
+}
+
+
+@media (min-width: 1200px) {
+    
+}
