@@ -7,7 +7,6 @@ import Post from './Components/PostPage';
 
 function App() {
   return (
-    <div className="mainBackground">
       <div className="container">
         <Router>
           <Switch>
@@ -17,7 +16,6 @@ function App() {
           </Switch>
         </Router>
       </div>
-    </div>
   );
 }
 

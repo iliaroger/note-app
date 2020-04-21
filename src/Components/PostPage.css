@@ -138,6 +138,11 @@
 
 @media (max-width: 575.98px) {
 
+    .mainText{
+        overflow: hidden;
+        font-size: 25px;
+    }
+
     .container{
         width: 100% !important;
     }
@@ -167,11 +172,11 @@
         background-color: black;
         width: 100%;
         margin: 0 auto;
-        margin-top: 3%;
+        margin-top: 10%;
         -moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
         -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
-        margin-bottom: 2%;
+        margin-bottom: 10%;
     }
 
 }
