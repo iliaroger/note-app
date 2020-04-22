@@ -35,7 +35,6 @@
 }
 
 .loginButton{
-    margin: 0 auto;
     text-align: center;
     color: white;
     font-family: sf-thin;
@@ -48,6 +47,10 @@
     border: none;
 }
 
+.centerButton {
+    text-align: center;
+}
+
 .loginButton:hover{
     transition: 0.3s;
     text-decoration: none;
@@ -56,13 +59,12 @@
 }
 
 .readButton {
-    margin: 0 auto;
     text-align: center;
     color: white;
     font-family: sf-thin;
     font-size: 20px;
     background-color: #745AFF;
-    padding: 2px 50px;
+    padding: 8px 50px;
     border-radius: 20px;
     font-weight: 500;
     transition: 0.3s;
@@ -112,7 +114,26 @@
 @media (max-width: 575.98px) {
 
     .innerRow {
-        margin-top: 50%;
+        margin-top: 25%;
+        margin-bottom: 15%;
+    }
+
+    .inputGroup input {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
+
+    input[type=email],
+    input[type=password],
+    textarea {
+        -webkit-appearance: none;
+    }
+
+    .centerButton{
+        margin-bottom: 5%;
+        margin-top: 5%;
     }
 
 

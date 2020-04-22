@@ -133,18 +133,11 @@
 }
 
 
-
-
-
 @media (max-width: 575.98px) {
 
     .mainText{
         overflow: hidden;
-        font-size: 25px;
-    }
-
-    .container{
-        width: 100% !important;
+        font-size: 30px;
     }
 
     .postMainWrapper{
@@ -153,6 +146,7 @@
 
     .postRow{
         margin-top: 15%;
+        margin-bottom: 15%;
     }
 
     .container{
@@ -177,6 +171,23 @@
         -webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
         margin-bottom: 10%;
+    }
+
+    .readButtonMargin{
+        margin-top: 10%;
+        margin-bottom: 20%;
+    }
+
+    .postInput {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
+
+    .buttonMargin{
+        margin-top: 3%;
+        margin-bottom: 3%;
     }
 
 }

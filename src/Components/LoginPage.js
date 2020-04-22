@@ -33,10 +33,9 @@ function Login(){
     }
 
     return(
-        <div className="outerWrapper">
         <div className="row innerRow">
-            <p className="col-md-12 mainText">my notebook (ilia roger). <br></br> have fun reading my notes and thoughts. <br></br> what is privacy anyway? </p>
             <div className="col-md-12">
+                <p className="col-md-12 mainText">my notebook (ilia roger). <br></br> have fun reading my notes and thoughts. <br></br> what is privacy anyway? </p>
                 <p className="ifText">if you are ilia then:</p>
             </div>
             <div className="col-md-12 inputGroup">
@@ -45,20 +44,24 @@ function Login(){
                     <input className="loginInput" id="loginPassword" type="password" onChange={onPasswordChange} placeholder="password"></input>
                 </form>
             </div>
-            <button onClick={loginUser} className="linkWrapper loginButton">
+            <div className="col-md-12 centerButton">
+                <button onClick={loginUser} className="linkWrapper loginButton">
                 login
-            </button>
-            {userAuth ? <Redirect to={{
+                </button>
+                {userAuth ? <Redirect to={{
                 pathname: '/post',
                 state: {validated: true}
-            }} /> : null}
+                }} /> : null}
+            </div>
+            
             <div className="col-md-12">
                 <p className="elseText">else:</p>
             </div>
-            <Link to="/read" className="linkWrapper readButton">
-                read notes     
-            </Link>
-        </div>
+            <div className="col-md-12 centerButton">
+                <Link to="/read" className="linkWrapper readButton">
+                    read notes     
+                </Link>
+            </div>
         </div>
         
     )
