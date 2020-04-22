@@ -17,3 +17,8 @@
     background-color: rgb(182, 57, 99);
     transition: 0.3s;
 }
+
+.readButtonMargin{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
