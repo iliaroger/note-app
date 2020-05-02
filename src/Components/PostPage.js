@@ -24,6 +24,20 @@ function Post(props){
         return dynamicBorderStyle;
     }
 
+    // get month for the h1 separators that come every 10 posts. 
+    function getMonth(el){
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let epoch = new Date(0);
+        let conTime = epoch.setUTCSeconds(el);
+        let month = new Date(conTime).getMonth();
+        
+        return monthNames[month];
+
+    }
+
     function hashId(){
         const characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P',
         'Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k',
@@ -53,6 +67,7 @@ function Post(props){
                     });
                 }
             })
+            // sort posts by post date. switch a and b to reverse the order
             const sortedData = [...firestoreData].sort((a,b)=>{
                 return a.time - b.time; 
             });
@@ -60,6 +75,15 @@ function Post(props){
                 Object.defineProperties(element, {
                     monthReminder: {
                         value: counter % 10 === 0 ? true : false,
+                        writable: true
+                    }
+                })
+                /* added this month property for every post so that the proper month can be displayed
+                   in the h1 separator
+                */
+                Object.defineProperties(element, {
+                    monthDisplay: {
+                        value: getMonth(element.time.seconds),
                         writable: true
                     }
                 })
@@ -72,15 +96,10 @@ function Post(props){
         })
     },[])
 
-    function checkForDate(el, monthReminder){
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
+    function checkForDate(el, monthReminder, elementMonth){
         let seconds = el;
-        let currentMonth = new Date().getUTCMonth(seconds);
         let currentYear = new Date().getUTCFullYear(seconds);
-        const h1 = React.createElement('h1', {className: "noteDate"}, `${monthNames[currentMonth]}, ${currentYear}`);
-
+        const h1 = React.createElement('h1', {className: "noteDate"}, `${elementMonth.monthDisplay}, ${currentYear}`);
         if(monthReminder === true){
             return h1;
         }
@@ -149,7 +168,7 @@ function Post(props){
                      if(el.data !== ''){
                          return <div key={hashId()}>
                                 <div key={hashId()} id="noteDateInsert">
-                                    {checkForDate(el.time.seconds, el.monthReminder)}
+                                    {checkForDate(el.time.seconds, el.monthReminder, el)}
                                 </div>
                                 <div key={hashId()} className="noteBox" style={colorPicker()}>
                                     <p key={hashId()} className="noteBoxP">{el.data}</p>

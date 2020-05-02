@@ -20,6 +20,20 @@ function Read(){
         return dynamicBorderStyle;
     }
 
+    // get month for the h1 separators that come every 10 posts. 
+    function getMonth(el) {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let epoch = new Date(0);
+        let conTime = epoch.setUTCSeconds(el);
+        let month = new Date(conTime).getMonth();
+
+        return monthNames[month];
+
+    }
+
     useEffect(() => {
         const firestoreData = [];
         let counter = 0;
@@ -42,6 +56,16 @@ function Read(){
                         value: counter % 10 === 0 ? true : false,
                         writable: true
                     }
+                })     
+                
+                /* added this month property for every post so that the proper month can be displayed
+                   in the h1 separator
+                */
+                Object.defineProperties(element, {
+                    monthDisplay: {
+                        value: getMonth(element.time.seconds),
+                        writable: true
+                    }
                 })
                 counter++;
                 if (counter >= 10) counter = 0;
@@ -53,19 +77,15 @@ function Read(){
     }, [])
 
     
-    function checkForDate(el, monthReminder){
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
+    function checkForDate(el, monthReminder, elementMonth) {
         let seconds = el;
-        let currentMonth = new Date().getUTCMonth(seconds);
         let currentYear = new Date().getUTCFullYear(seconds);
-        const h1 = React.createElement('h1', {className: "noteDate"}, `${monthNames[currentMonth]}, ${currentYear}`);
-
-        if(monthReminder === true){
+        const h1 = React.createElement('h1', {
+            className: "noteDate"
+        }, `${elementMonth.monthDisplay}, ${currentYear}`);
+        if (monthReminder === true) {
             return h1;
         }
-
 
     }
 
@@ -101,7 +121,7 @@ function Read(){
                      if(el.data !== ''){
                      return <div key={Math.floor(Math.random()*50000)}>
                                 <div id="noteDateInsert" key={Math.floor(Math.random()*50000)}>
-                                    {checkForDate(el.time.seconds, el.monthReminder)}
+                                     {checkForDate(el.time.seconds, el.monthReminder, el)}
                                 </div>
                                 <div key={Math.floor(Math.random()*50000)} className="noteBox" style={colorPicker()}>
                                     <p key={Math.floor(Math.random()*50000)} className="noteBoxP">{el.data}</p>
