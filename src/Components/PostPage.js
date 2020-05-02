@@ -7,8 +7,9 @@ import firestore from './Firebase';
 function Post(props){
 
     const [data, setData] = useState([]);
-    const [input, setInput] = useState('');
     const [userValidated, setValidation] = useState('false');
+
+    let inputData;
 
     function colorPicker(){
         const colorPalette = ['0444BF', '0584F2', '0AAFF1', 'EDF259', '6465A5', '6975A6', 'F28A30', 'F3E96B', 'F05837',
@@ -71,10 +72,6 @@ function Post(props){
         })
     },[])
 
-    const changeInput = useCallback((e)=>{
-        setInput(e.target.value);
-    },[])
-
     function checkForDate(el, monthReminder){
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
@@ -121,18 +118,18 @@ function Post(props){
     function postNote(){
         // post data to firebase
 
-        if(input !== ''){
+        if(inputData.value !== ''){
             
             let currentTime = new Date();
             firestore.database.collection('notes').add({
-                note: input,
+                note: inputData.value,
                 time: currentTime
             })
             .then(()=>{
                 setData([
                     ...data,
                     {
-                        data: input,
+                        data: inputData.value,
                         time: currentTime
                     }
                 ])
@@ -141,7 +138,6 @@ function Post(props){
                 console.log('error adding this document');
             })
         }
-        setInput('');
     }
 
     return(
@@ -166,7 +162,7 @@ function Post(props){
                 </div>
             </div>
             <div className="col-md-12">
-                <input className="postInput" onChange={changeInput} value={input}></input>
+                <input className="postInput" ref={input => inputData = input} value={inputData}></input>
             </div>
             <div className="col-md-12 buttonMargin">
                 <button onClick={postNote} className="postButton">post</button>
